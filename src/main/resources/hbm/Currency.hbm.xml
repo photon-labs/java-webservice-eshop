@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.photon.phresco.eshop.models.CurrencyHBM" table="eshop_currencies">
+		<meta attribute="class-description">
+			This class contains the Product details.
+	    </meta>
+		<id name="currencyId" type="int" column="cy_id">
+			<generator class="increment" />
+		</id>
+		<property name="currencyCode" type="character" column="cy_code" />
+		<property name="symbol" type="string" column="cy_symbol" />
+	</class>
+
+</hibernate-mapping>

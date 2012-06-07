@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.photon.phresco.eshop.models.OrderHBM" table="eshop_orders">
+		<meta attribute="class-description">
+			This class contains the Product details.
+	    </meta>
+		<id name="orderId" type="integer" column="od_id">
+			<generator class="increment" />
+		</id>
+		<property name="orderDate" type="date" column="od_date" />
+		<property name="lastUpdate" type="date" column="od_last_update" />
+		<property name="orderStatus" type="boolean" column="od_status" />
+		<property name="shippingFirstName" type="string" column="od_shipping_first_name" />
+		<property name="shippingLastName" type="string" column="od_shipping_last_name" />
+		<property name="shippingAddress1" type="string" column="od_shipping_address1" />
+		<property name="shippingAddress2" type="string" column="od_shipping_address2" />
+		<property name="shippingCity" type="string" column="od_shipping_city" />
+		<property name="shippingPostalCode" type="integer" column="od_shipping_postal_code" />
+		<property name="shippingCost" type= "double" column="od_shipping_cost" />
+		<property name="paymentFirstName" type="string" column="od_payment_first_name" />
+		<property name="paymentLastName" type="string" column="od_payment_last_name" />
+		<property name="paymentAddress1" type="string" column="od_payment_address1" />
+		<property name="paymentAddress2" type="string" column="od_payment_address2" />
+		<property name="paymentCity" type="string" column="od_payment_city" />
+		<property name="paymentPostalCode" type="integer" column="od_payment_postal_code" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.photon.phresco.eshop.models.CategoryHBM" table="eshop_categories">
+        <id name="categoryId" type="java.lang.Integer">
+            <meta attribute="use-in-equals">true</meta>
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+        <property name="categoryName" type="string">
+            <column name="cat_name" length="255"/>
+        </property>
+        <property name="categoryImage" type="string">
+            <column name="cat_image" length="255"/>
+        </property>
+        <property name="categoryDetailsImage" type="string">
+            <column name="cat_details_image" length="255"/>
+        </property>
+        <property name="categoryParentId" type="java.lang.Integer">
+            <column name="cat_parent_id"/>
+        </property>
+        <property name="categoryDescription" type="string">
+            <column name="cat_description" length="255"/>
+        </property>
+    </class>
+</hibernate-mapping>

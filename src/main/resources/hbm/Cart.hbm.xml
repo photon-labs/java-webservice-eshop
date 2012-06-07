@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="com.photon.phresco.eshop.models.CartHBM" table="eshop_cart">
+		<meta attribute="class-description">
+			This class contains the Product details.
+	 </meta>
+		<id name="cartId" type="integer" column="ct_id">
+			<generator class="increment" />
+		</id>
+		<property name="productId" type="integer" column="pd_id" />
+		<property name="cartSessionid" type="character" column="ct_session_id" />
+		<property name="cartQty" type="integer" column="ct_qty"/>
+		<property name= "cartDate" type="date" column="ct_date" />
+	</class>
+</hibernate-mapping>
+

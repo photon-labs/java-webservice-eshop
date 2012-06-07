@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.photon.phresco.eshop.models.OrderItemHBM" table="eshop_order_items">
+		<meta attribute="class-description">
+			This class contains the Product details.
+	    </meta>
+		<id name="orderId" type="integer" column="od_id">
+			<generator class="increment" />
+		</id>
+		<property name="productId" type="integer" column="pd_id" />
+		<property name="orderQty" type="integer" column="od_qty" />
+	</class>
+
+</hibernate-mapping>

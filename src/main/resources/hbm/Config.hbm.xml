@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<class name="com.photon.phresco.eshop.models.ConfigurationHBM"	table="eshop_shop_configurations">
+		<meta attribute="class-description">
+			This class contains the Product details.
+	    </meta>
+		<id name="eshopConfigName" type="string" column="sc_name">
+			<generator class="increment" />
+		</id>
+		<property name="eshopConfigAddress" type="string" column="sc_address" />
+		<property name="eshopConfigEmail" type="string" column="sc_email" />
+		<property name="eshopConfigPhone" type="integer" column="sc_phone" />
+		<property name="eshopConfigShippingCost" type="double" column="sc_shipping_cost" />
+		<property name="eshopConfigCurrency" type="integer" column="sc_currency" />
+	</class>
+</hibernate-mapping>

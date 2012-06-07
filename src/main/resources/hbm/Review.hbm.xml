@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.photon.phresco.eshop.models.ReviewHBM" table="eshop_reviews">
+        <id name="reviewId" type="java.lang.Integer">
+            <meta attribute="use-in-equals">true</meta>
+            <column name="id" />
+            <generator class="increment" />
+        </id>
+         <property name="productId" type="java.lang.Integer">
+            <column name="pd_id" length="30"/>
+        </property>
+        <property name="userId" type="java.lang.Integer">
+            <column name="user_id" length="30"/>
+        </property>
+        <property name="ratings" type="java.lang.Integer">
+            <column name="rating"/>
+        </property>
+        <property name="comment" type="string">
+            <column name="comment"/>
+        </property>
+        <property name="commentDate" type="date">
+            <column name="comment_date" length="255"/>
+        </property>
+    </class>
+</hibernate-mapping>

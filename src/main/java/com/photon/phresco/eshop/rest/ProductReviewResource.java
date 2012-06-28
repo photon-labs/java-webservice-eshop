@@ -13,13 +13,13 @@ import com.photon.phresco.eshop.models.rest.OutputResponse;
 import com.photon.phresco.eshop.models.rest.ProductReview;
 
 @Path("/product")
-@Produces({ MediaType.APPLICATION_JSON })
+@Produces(MediaType.APPLICATION_JSON)
 public class ProductReviewResource {
 
 	@POST
 	@Path("/post/review")
 	@Consumes("text/plain")
-	@Produces({ MediaType.APPLICATION_JSON })
+	@Produces(MediaType.APPLICATION_JSON)
 	public OutputResponse postClichedMessage(String review) throws Exception {
 	    // Store the message
 		System.out.println("Message = " + review);

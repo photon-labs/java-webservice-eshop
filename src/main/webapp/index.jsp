@@ -204,7 +204,7 @@
 
                 <!-- table footer-->
                 <tfoot>
-                    <tr><td>Copyright &#9400 2011 Photon Infotech</td></tr>
+                    <tr><td>Copyright &#9400 2012 Photon Infotech</td></tr>
                 </tfoot>
             </table>
         </div> <!-- content -->

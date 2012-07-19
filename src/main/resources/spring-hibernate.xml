@@ -12,7 +12,11 @@
 		<property name="location">
 			<value>phresco-env-config.xml</value>
 		</property>
+		<property name="configurationTypes">
+			<value>Database</value>
+		</property>
 	</bean>
+
 
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">

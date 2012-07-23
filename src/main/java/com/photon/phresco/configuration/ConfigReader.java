@@ -120,6 +120,11 @@ public class ConfigReader {
 			//get the environment element
 			Element environment = (Element) environmentList.item(i);
 			String envName = environment.getAttribute("name");
+			
+		boolean defaultEnv = Boolean.parseBoolean(environment.getAttribute("default"));
+			if (defaultEnv) {
+				defaultEnvironment = envName;
+			}
 			//add environment element to map
 			ENV_MAP.put(envName, environment);
 		}

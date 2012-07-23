@@ -114,7 +114,7 @@ public class XmlPropertyPlaceholderConfigurer extends
 						// this.getClass().getClassLoader().getResourceAsStream(getLocation());
 						ConfigReader reader = new ConfigReader(in);
 						String envName = System.getProperty(serverEnvironment);
-						if (envName.isEmpty()) {
+						if (envName == null) {
 							envName = reader.getDefaultEnvName();
 						}
 						List<Configuration> configByEnv = reader.getConfigByEnv(envName);

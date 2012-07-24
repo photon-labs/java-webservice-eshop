@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+  * PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -19,9 +19,11 @@
  */
 package com.photon.phresco.Screens;
 
-public class AddScreen extends PhotonAbstractScreen {
 
-	public AddScreen() throws Exception {
-		// super(host, port, browser, url, speed, reporter);
-	}
+
+public class AddScreen extends PhotonAbstractScreen{
+
+    public AddScreen() throws Exception {
+       //super(host, port, browser, url, speed, reporter);
+    }
 }

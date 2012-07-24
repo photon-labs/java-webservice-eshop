@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+  * PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -18,7 +18,6 @@
  * ###
  */
 package com.photon.phresco.selenium.util;
-
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
@@ -31,7 +30,7 @@ public class ProcessWaiter {
 		final Thread callingThread = Thread.currentThread();
 
 		final long start = System.currentTimeMillis();
-
+		
 		final Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 			@Override

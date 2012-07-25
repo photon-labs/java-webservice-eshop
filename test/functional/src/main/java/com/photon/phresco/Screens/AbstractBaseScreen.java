@@ -21,8 +21,7 @@ package com.photon.phresco.Screens;
 
 import java.io.IOException;
 
-import com.photon.phresco.selenium.report.Reporter;
-import com.photon.phresco.Screens.BaseScreen;
+import com.photon.phresco.selenium.util.GetCurrentDir;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 
 public abstract class AbstractBaseScreen extends BaseScreen {
@@ -33,29 +32,31 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 	protected long WAIT_FOR_ELEM_SEC = 120;
 
 	protected AbstractBaseScreen() {
-		if (selenium == null) {
+		if (driver == null) {
 			throw new IllegalStateException(
 					"The BaseScreen.initialize method must have been "
 							+ "called before creating a screen instance.");
 		}
 	}
 
-	protected AbstractBaseScreen(String browser, String url, Reporter reporter)
-			throws IOException, ScreenActionFailedException {
-		initalizeSelenium("localhost", 4444, browser, url, null, reporter);
-
-	}
+	// protected AbstractBaseScreen(String host,int port,String browser, String
+	// url, String speed,String context) throws IOException,
+	// ScreenActionFailedException {
+	// initalizeSelenium(host, port, browser, url, speed, context);
+	//
+	// }
 
 	protected AbstractBaseScreen(String host, int port, String browser,
-			String url, String speed, Reporter reporter) throws IOException,
+			String url, String speed, String contextName) throws IOException,
 			ScreenActionFailedException {
-		initalizeSelenium(host, port, browser, url, speed, reporter);
+		initalizeSelenium(host, port, browser, url, speed, contextName);
 	}
 
 	public static void initalizeSelenium(String host, int port, String browser,
-			String url, String speed, Reporter reporter)
+			
+			String url, String speed, String contextName)
 			throws ScreenActionFailedException {
-		initialize(browser, reporter, speed, url);
+		initialize(browser, url,contextName);
 
 	}
 
@@ -282,6 +283,7 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		msg("AbstractBaseScreen.waitForElementPresent " + elem);
 		for (int second = 0;; second++) {
 			if (second >= WAIT_FOR_ELEM_SEC) {
+				selenium.captureEntirePageScreenshot(GetCurrentDir.getCurrentDirectory()+"\\Failure.png", "background=#CCFFDD");
 				throw new Exception("timeout: Element " + elem
 						+ " is not present");
 			}
@@ -298,6 +300,7 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		msg("AbstractBaseScreen.waitForTextPresent " + text);
 		for (int second = 0;; second++) {
 			if (second >= WAIT_FOR_ELEM_SEC) {
+			selenium.captureScreenshot(GetCurrentDir.getCurrentDirectory()+"\\Failure.png");
 				throw new Exception("timeout: Text " + text + " is not present");
 			}
 			try {
@@ -310,32 +313,40 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		msg("AbstractBaseScreen.waitForTextPresent end");
 	}
 
-	protected boolean waitForTextPresentConsole(String text) throws Exception {
-		msg("AbstractBaseScreen.waitForTextPresent " + text);
-		for (int second = 0;; second++) {
-			if (second >= WAIT_FOR_ELEM_SEC) {
-				throw new Exception("timeout: Text " + text + " is not present");
-			}
-			try {
-				if (selenium.isTextPresent(text))
-					break;
-			} catch (Exception e) {
-			}
-			Thread.sleep(SLEEP_FOR_WAIT_ELEM_MIL_SEC);
-		}
-		msg("AbstractBaseScreen.waitForTextPresentConsole end");
-		return true;
-	}
-
 	/**
 	 * Note that this seems to be extremely slow with Internet Explorer.
 	 * 
 	 * @throws Exception
 	 */
+	
+	protected boolean waitForTextPresentConsole(String text) throws Exception {
+		msg("AbstractBaseScreen.waitForTextPresent " + text);
+		for (int second = 0; second < 20; second++) {
+			if (second >= WAIT_FOR_ELEM_SEC) {
+				selenium.captureScreenshot(GetCurrentDir.getCurrentDirectory()+"\\Failure.png");
+				throw new Exception("timeout: Text " + text + " is not present");
+			}
+			try {
+				if (selenium.isTextPresent(text)) {
+					return true;
+				} else {
+					Thread.sleep(SLEEP_FOR_WAIT_ELEM_MIL_SEC);
+
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		msg("AbstractBaseScreen.waitForTextPresentConsole end");
+		return false;
+	}
 	protected void waitForElementIsVisible(String elem) throws Exception {
 		msg("AbstractBaseScreen.waitForElementIsVisible " + elem);
 		for (int second = 0;; second++) {
 			if (second >= WAIT_FOR_ELEM_SEC) {
+				selenium.captureScreenshot(GetCurrentDir.getCurrentDirectory()+"\\Failure.png");
 				throw new Exception("timeout: Element " + elem
 						+ " is not visible");
 			}
@@ -378,14 +389,6 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		msg("AbstractBaseScreen.refresh");
 		// selenium.click(photonUiConstants.CS_BUTTON_REFRESH);
 		sleep(WAIT_FOR_REFRESH_MIL_SEC);
-	}
-
-	protected boolean searchText(String elem) throws Exception {
-		System.out.println("***************waitforTextPresent executed");
-		waitForTextPresent(elem);
-		System.out.println("***************waitforTextPresent executed");
-		boolean isElemPre = selenium.isTextPresent(elem);
-		return isElemPre;
 	}
 
 	protected void focus(String elem) throws Exception {

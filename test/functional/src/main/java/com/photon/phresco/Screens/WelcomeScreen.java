@@ -21,18 +21,152 @@ package com.photon.phresco.Screens;
 
 import java.io.IOException;
 
-import com.photon.phresco.selenium.report.Reporter;
-import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import org.apache.commons.lang.StringUtils;
+
+import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 
 public class WelcomeScreen extends PhotonAbstractScreen {
-	PhrescoUiConstants phrsc = new PhrescoUiConstants();
+	private PhrescoJwsUiConstants phrsc = new PhrescoJwsUiConstants();
 
-	public WelcomeScreen(String host, int port, String browser, String url,
-			String speed, Reporter reporter) throws InterruptedException,
+	public WelcomeScreen(String browser, String url, String contextName)
+			throws InterruptedException, IOException, Exception {
+		super(browser, url, contextName);
+
+		/*
+		 * waitForElementPresent(phrsc.HOME); click(phrsc.HOME);
+		 */
+
+	}
+
+	// public static void main (String args[]) throws JSONException {
+	// TestJson json = new TestJson();
+
+	// }
+
+	public void JwsEshop(String methodName) throws InterruptedException,
 			IOException, Exception {
-		super(host, port, browser, url, speed, reporter);
-		
-		waitForTextPresent(phrsc.TEXTCAPTURED);
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.ESHOP, methodName);
+
+	}
+
+	public void JwsConfig(String methodName) throws InterruptedException,
+			IOException, Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.CONFIG, methodName);
+
+	}
+
+	public void JwsCategories(String methodName) throws InterruptedException,
+			IOException, Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.CATEGORIES, methodName);
+
+	}
+
+	public void JwsProducts(String methodName) throws InterruptedException,
+			IOException, Exception {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.PRODUCTS, methodName);
+
+	}
+
+	public void JwsCategory1(String methodName) throws InterruptedException,
+			IOException, Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.CATEGORY1, methodName);
+
+	}
+
+	public void JwsCategory2(String methodName) throws InterruptedException,
+			IOException, Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.CATEGORY2, methodName);
+
+	}
+
+	public void JwsCategory3(String methodName) throws InterruptedException,
+			IOException, Exception {
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.CATEGORY3, methodName);
+
+	}
+
+	public void Jwsnewproducts(String methodName) throws Exception, IOException {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.PRODUCTS, methodName);
+
+	}
+
+	public void JwsSpecialproducts(String methodName) throws Exception,
+			IOException {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.SPECIALPRODUCTS, methodName);
+
+	}
+
+	public void JwsSearchMobile(String methodName) throws Exception,
+			IOException {
+
+		if (StringUtils.isEmpty(methodName)) {
+			methodName = Thread.currentThread().getStackTrace()[1]
+					.getMethodName();
+			;
+		}
+		isTextPresent(phrsc.SEARCHMOBILE, methodName);
+		// System.out.println("==========================================");
+
+	}
+
+	public void JwsSearchComputer(String methodName) throws Exception,
+			IOException {
+		isTextPresent(phrsc.SEARCHCOMPUTER, methodName);
+
+	}
+
+	public void JwsReviewProduct() throws Exception, IOException {
+		// waitForTextPresent(phrsc.PRODUCTREVIEW);
 
 	}
 

@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+  * PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -19,11 +19,20 @@
  */
 package com.photon.phresco.selenium.util;
 
+import com.thoughtworks.selenium.Selenium;
+
+
+
 @SuppressWarnings("serial")
-public class ScreenException extends Exception {
+public  class ScreenException extends Exception {
 
-	public ScreenException(String msg) {
-
-		super(msg);
-	}
+	    public ScreenException(String msg){ 
+	    	
+	      super(msg); 
+	    } 
 }
+		
+		
+
+	
+

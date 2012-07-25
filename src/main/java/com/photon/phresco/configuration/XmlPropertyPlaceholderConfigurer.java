@@ -22,6 +22,7 @@ package com.photon.phresco.configuration;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
@@ -42,14 +43,16 @@ import org.springframework.util.StringValueResolver;
 public class XmlPropertyPlaceholderConfigurer extends
 		PropertyPlaceholderConfigurer {
 	
+	private static final String serverEnvironment = "SERVER_ENVIRONMENT";
 	private PropertiesPersister propertiesPersister = new DefaultPropertiesPersister();
 	private Resource[] locations;
+	private Resource[] configurationTypes;
 	private String fileEncoding;
 	private boolean ignoreResourceNotFound = false;
 	private String nullValue;
 	private String beanName;
 	private BeanFactory beanFactory;
-
+	
 	public void setLocation(Resource location) {
 		this.locations = new Resource[] {location};
 	}
@@ -58,6 +61,13 @@ public class XmlPropertyPlaceholderConfigurer extends
 		this.locations = locations;
 	}
 
+	public void getConfigurationTypes(Resource configurationTypes) {
+		this.configurationTypes = new Resource[] {configurationTypes};
+	}
+
+	public void setConfigurationTypes(Resource[] configurationTypes) {
+		this.configurationTypes = configurationTypes;
+	}
 
 	@Override
 	protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
@@ -104,7 +114,6 @@ public class XmlPropertyPlaceholderConfigurer extends
 		}
 	}
 
-	
 	@Override
 	public void postProcessBeanFactory(
 			ConfigurableListableBeanFactory beanFactory) throws BeansException{
@@ -120,13 +129,30 @@ public class XmlPropertyPlaceholderConfigurer extends
 					e1.printStackTrace();
 				}
 				try {
-					if(location.getFilename().endsWith(XML_FILE_EXTENSION)){
-						//this.getClass().getClassLoader().getResourceAsStream(getLocation());
+					if (location.getFilename().endsWith(XML_FILE_EXTENSION)) {
+						// this.getClass().getClassLoader().getResourceAsStream(getLocation());
 						ConfigReader reader = new ConfigReader(in);
-						List<Configuration> configByEnv = reader.getConfigByEnv("Production");
+						String envName = System.getProperty(serverEnvironment);
+						if (envName == null) {
+							envName = reader.getDefaultEnvName();
+						}
+						List<Configuration> configByEnv = reader.getConfigByEnv(envName);
 						for (Configuration config : configByEnv) {
-							mergedProps = config.getProperties();
-							//props.list(System.out);
+							if (this.configurationTypes != null) {
+								for (i = 0; i < this.configurationTypes.length; i++) {
+									Resource configurationTypes = this.configurationTypes[i];
+									String configTypes = configurationTypes.getFilename();
+									
+									String[] splitStrings = configTypes.split(",");
+									List<String> allowedTokens = Arrays.asList(splitStrings);
+									
+
+									if (allowedTokens.contains(config.getType())) {
+										mergedProps = config.getProperties();
+									}
+								}
+							}
+							// props.list(System.out);
 						}
 					}else {
 						if (this.fileEncoding != null) {

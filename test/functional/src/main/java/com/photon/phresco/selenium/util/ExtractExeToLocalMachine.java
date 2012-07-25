@@ -64,7 +64,7 @@ public class ExtractExeToLocalMachine {
 			IOException {
 		final URI jarURI;
 		final URI exe;
-
+		
 		jarURI = getJarURI();
 		exe = getFile(jarURI, fileToExtract, targetFolder);
 		System.out.println(exe);

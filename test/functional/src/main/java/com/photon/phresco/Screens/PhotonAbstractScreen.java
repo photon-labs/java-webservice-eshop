@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+  * PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -21,21 +21,20 @@ package com.photon.phresco.Screens;
 
 import java.io.IOException;
 
-import com.photon.phresco.selenium.report.Reporter;
-import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.photon.phresco.selenium.util.ScreenException;
 
-public class PhotonAbstractScreen extends AbstractBaseScreen {
+public class PhotonAbstractScreen extends WebDriverAbstractBaseScreen {
 
-	public PhrescoUiConstants PhotonUIConstants;
+	// public PhrescoUiConstantsXml phrescoXml;
 
-	protected PhotonAbstractScreen() {
+	protected PhotonAbstractScreen()throws ScreenException {
 
 	}
 
-	protected PhotonAbstractScreen(String host, int port, String browser,
-			String url, String speed, Reporter reporter) throws IOException,
+	protected PhotonAbstractScreen( String browser,
+			String url,  String contextName) throws IOException,
 			Exception {
-		super(host, port, browser, url, speed, reporter);
+		super(browser, url, contextName);
 	}
 
 }

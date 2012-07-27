@@ -20,7 +20,7 @@
 /*
  * Author by {phresco} QA Automation Team
  */
-package photon.phresco.Jws.testcases;
+package com.photon.phresco.testcases;
 
 import java.io.IOException;
 
@@ -29,14 +29,16 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.openqa.selenium.server.SeleniumServer;
+
 import com.photon.phresco.Screens.TestJson;
 import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.thoughtworks.selenium.Selenium;
 
-public class RestApiNewproducts extends TestCase {
+public class RestApiSpecialProducts extends TestCase {
 	
-
 	private PhrescoUiConstants phrsc;
 	private PhrescoJwsUiConstants jws;
 	private int SELENIUM_PORT;
@@ -48,7 +50,7 @@ public class RestApiNewproducts extends TestCase {
 	String methodName;
 
 	@Test
-	public void testNewproducts() throws InterruptedException, IOException, Exception {
+	public void testSpecialProducts() throws InterruptedException, IOException, Exception {
 		try{
 			
                     assertNotNull("Browser name should not be null",browserAppends);
@@ -58,13 +60,12 @@ public class RestApiNewproducts extends TestCase {
         			methodName = Thread.currentThread().getStackTrace()[1]
         					.getMethodName();
         			System.out.println("methodName = " + methodName);
-           			wel.Jwsnewproducts(methodName);
+           			wel.JwsSpecialproducts(methodName);
            			TestJson nodejson = new TestJson();
-           			nodejson.testNewProducts();
+           			nodejson.SpecialProducts();
            		} catch(Exception t){
            			new RuntimeException(t);
-           			//wel.ScreenCapturer();
-               	}
+           		               	}
            	}
 
            	public void setUp() throws Exception {
@@ -75,7 +76,7 @@ public class RestApiNewproducts extends TestCase {
     					+ phrsc.HOST + ":"
     					+ phrsc.PORT + "/";
     			browserAppends = "*" + phrsc.BROWSER;
-                contextName = phrsc.CONTEXT + jws.CONTEXT_REST_API + jws.CONTEXT_NEWPRODUCTS;
+                          contextName = phrsc.CONTEXT+ jws.CONTEXT_REST_API + jws.CONTEXT_SPECIAL_PRODUCTS;
            	}
 
            	public void tearDown() {
@@ -83,8 +84,8 @@ public class RestApiNewproducts extends TestCase {
            	}
 
            	private void clean() {
+           		
            		wel.closeBrowser();
+           	}
 
            }
-
-}

@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+ *  PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -20,7 +20,7 @@
 /*
  * Author by {phresco} QA Automation Team
  */
-package photon.phresco.Jws.testcases;
+package com.photon.phresco.testcases;
 
 import java.io.IOException;
 
@@ -29,14 +29,15 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.openqa.selenium.server.SeleniumServer;
+
 import com.photon.phresco.Screens.TestJson;
 import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.thoughtworks.selenium.Selenium;
 
-
-public class RestApiCategory1 extends TestCase {
-	
+public class RestApiCategories extends TestCase {
 
 	private PhrescoUiConstants phrsc;
 	private PhrescoJwsUiConstants jws;
@@ -47,12 +48,14 @@ public class RestApiCategory1 extends TestCase {
 	WelcomeScreen wel;
 	String serverURL;
 	String methodName;
-	
+
 	@Test
-	public void testCategory1() throws InterruptedException, IOException, Exception {
-		try{
-			
-		    assertNotNull("Browser name should not be null",browserAppends);
+	public void testRestApiCategories() throws InterruptedException,
+			IOException, Exception {
+		try {
+
+			assertNotNull("Browser name should not be null", browserAppends);
+
 			assertNotNull("selenium-port number should not be null",
 					SELENIUM_PORT);
 			wel = new WelcomeScreen(browserAppends, serverURL, contextName);
@@ -60,25 +63,24 @@ public class RestApiCategory1 extends TestCase {
 			methodName = Thread.currentThread().getStackTrace()[1]
 					.getMethodName();
 			System.out.println("methodName = " + methodName);
-			wel.JwsCategory1(methodName);
+			wel.JwsCategories(methodName);
+			System.out.println("Sample Testing*******************************");
 			TestJson nodejson = new TestJson();
-			nodejson.testCategory1();
-		} catch(Exception t){
+			nodejson.testCategories();
+		} catch (Exception t) {
 			new RuntimeException(t);
-    	}
+					}
 	}
 
 	public void setUp() throws Exception {
-		
+
 		phrsc = new PhrescoUiConstants();
 		jws = new PhrescoJwsUiConstants();
-		serverURL = phrsc.PROTOCOL + "://"
-				+ phrsc.HOST + ":"
-				+ phrsc.PORT + "/";
+		serverURL = phrsc.PROTOCOL + "://" + phrsc.HOST + ":" + phrsc.PORT
+				+ "/";
 		browserAppends = "*" + phrsc.BROWSER;
-	    contextName = phrsc. CONTEXT+ jws.CONTEXT_REST_API+jws. CONTEXT_CATEGORY1;
-
-		
+		contextName = phrsc.CONTEXT + jws.CONTEXT_REST_API
+				+ jws.CONTEXT_CATEGORIES;
 	}
 
 	public void tearDown() {

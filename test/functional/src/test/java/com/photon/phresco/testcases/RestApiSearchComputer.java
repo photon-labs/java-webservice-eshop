@@ -1,6 +1,6 @@
 /*
  * ###
- * PHR_JavaWebService
+  * PHR_JavaWebService
  * %%
  * Copyright (C) 1999 - 2012 Photon Infotech Inc.
  * %%
@@ -20,7 +20,7 @@
 /*
  * Author by {phresco} QA Automation Team
  */
-package photon.phresco.Jws.testcases;
+package com.photon.phresco.testcases;
 
 import java.io.IOException;
 
@@ -29,18 +29,22 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.openqa.selenium.server.SeleniumServer;
+
 import com.photon.phresco.Screens.TestJson;
 import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.thoughtworks.selenium.Selenium;
 
-public class RestApiSearchMobile extends TestCase {
+public class RestApiSearchComputer extends TestCase {
+	
 
-	private PhrescoUiConstants phrsc;
+   private PhrescoUiConstants phrsc;
 	private PhrescoJwsUiConstants jws;
 	private int SELENIUM_PORT;
 	private String browserAppends;
-	// private LoginScreen loginObject;
+	//private LoginScreen loginObject;
 	private Log log = LogFactory.getLog(getClass());
 	private String contextName;
 	WelcomeScreen wel;
@@ -48,44 +52,42 @@ public class RestApiSearchMobile extends TestCase {
 	String methodName;
 
 	@Test
-	public void testSearchMobile() throws InterruptedException, IOException,
-			Exception {
-		try {
-
-			assertNotNull("Browser name should not be null", browserAppends);
-			assertNotNull("selenium-port number should not be null",
-					SELENIUM_PORT);
+	public void testSearchComputer() throws InterruptedException, IOException, Exception {
+		try{
+			
+	        assertNotNull("Browser name should not be null",browserAppends);
+	        assertNotNull("selenium-port number should not be null",SELENIUM_PORT);
 			wel = new WelcomeScreen(browserAppends, serverURL, contextName);
 			assertNotNull(wel);
 			methodName = Thread.currentThread().getStackTrace()[1]
 					.getMethodName();
-			System.out.println("methodName = " + methodName);
-			wel.JwsSearchMobile(methodName);
-			TestJson nodejson = new TestJson();
-			nodejson.SearchMobile();
+					System.out.println("methodName = " + methodName);
+           			wel.JwsSearchComputer(methodName);
+           			TestJson nodejson = new TestJson();
+           			nodejson.SearchComputer();
+           		} catch(Exception t){
+           			new RuntimeException(t);
+           			//wel.ScreenCapturer();	
+               	}
+           	}
 
-		} catch (Exception t) {
-			new RuntimeException(t);
-		}
-	}
+           	public void setUp() throws Exception {
+           		
+           		phrsc = new PhrescoUiConstants();
+        		jws = new PhrescoJwsUiConstants();
+    			serverURL = phrsc.PROTOCOL + "://"
+    					+ phrsc.HOST + ":"
+    					+ phrsc.PORT + "/";
+    			browserAppends = "*" + phrsc.BROWSER;
+    			contextName = phrsc.CONTEXT + jws.CONTEXT_REST_API +  jws.CONTEXT_SEARCHCOUMPUTER;
+           	}
 
-	public void setUp() throws Exception {
+           	public void tearDown() {
+           		clean();
+           	}
 
-		phrsc = new PhrescoUiConstants();
-		jws = new PhrescoJwsUiConstants();
-		serverURL = phrsc.PROTOCOL + "://" + phrsc.HOST + ":" + phrsc.PORT
-				+ "/";
-		browserAppends = "*" + phrsc.BROWSER;
-		contextName = phrsc.CONTEXT + jws.CONTEXT_REST_API
-				+ jws.CONTEXT_SEARCHMOBILE;
-	}
+           	private void clean() {
+           		wel.closeBrowser();
+           	}
 
-	public void tearDown() {
-		clean();
-	}
-
-	private void clean() {
-		wel.closeBrowser();
-	}
-
-}
+           }

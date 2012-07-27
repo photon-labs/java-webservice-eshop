@@ -20,7 +20,7 @@
 /*
  * Author by {phresco} QA Automation Team
  */
-package photon.phresco.Jws.testcases;
+package com.photon.phresco.testcases;
 
 import java.io.IOException;
 
@@ -29,28 +29,31 @@ import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
+import org.openqa.selenium.server.SeleniumServer;
+
 import com.photon.phresco.Screens.TestJson;
 import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
+import com.thoughtworks.selenium.Selenium;
 
-public class RestApiCategory3 extends TestCase {
+public class RestApiProducts extends TestCase {
 	
+		private PhrescoUiConstants phrsc;
+		private PhrescoJwsUiConstants jws;
+		private int SELENIUM_PORT;
+		private String browserAppends;
+		//private LoginScreen loginObject;
+		private Log log = LogFactory.getLog(getClass());
+		private String contextName;
+		WelcomeScreen wel;
+		String serverURL;
+		String methodName;
 
-	private PhrescoUiConstants phrsc;
-	private PhrescoJwsUiConstants jws;
-	private int SELENIUM_PORT;
-	private String browserAppends;
-	private Log log = LogFactory.getLog(getClass());
-	private String contextName;
-	WelcomeScreen wel;
-	String serverURL;
-	String methodName;
-
-	@Test
-	public void testCategory3() throws InterruptedException, IOException, Exception {
-		try{
-			
+		@Test
+		public void testProducts() throws InterruptedException, IOException, Exception {
+			try{
+				
 		    assertNotNull("Browser name should not be null",browserAppends);
 		    assertNotNull("selenium-port number should not be null",SELENIUM_PORT);
 			wel = new WelcomeScreen(browserAppends, serverURL, contextName);
@@ -58,12 +61,12 @@ public class RestApiCategory3 extends TestCase {
 			methodName = Thread.currentThread().getStackTrace()[1]
 					.getMethodName();
 			System.out.println("methodName = " + methodName);
-			wel.JwsCategory3(methodName);
+			wel.JwsProducts(methodName);
 			TestJson nodejson = new TestJson();
-			nodejson.testCategory3();
+			nodejson.Products();
 		} catch(Exception t){
 			new RuntimeException(t);
-			//wel.ScreenCapturer();
+			
     	}
 	}
 
@@ -75,7 +78,7 @@ public class RestApiCategory3 extends TestCase {
 				+ phrsc.HOST + ":"
 				+ phrsc.PORT + "/";
 		browserAppends = "*" + phrsc.BROWSER;
-	    contextName = phrsc.CONTEXT+ jws.CONTEXT_REST_API+jws. CONTEXT_CATEGORY3;
+		contextName = phrsc.CONTEXT+jws.CONTEXT_REST_API+jws.CONTEXT_PRODUCTS;
 	}
 
 	public void tearDown() {
@@ -84,7 +87,6 @@ public class RestApiCategory3 extends TestCase {
 
 	private void clean() {
 		wel.closeBrowser();
-		
 	}
 
 }

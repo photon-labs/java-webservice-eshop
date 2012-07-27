@@ -20,7 +20,7 @@
 /*
  * Author by {phresco} QA Automation Team
  */
-package photon.phresco.Jws.testcases;
+package com.photon.phresco.testcases;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

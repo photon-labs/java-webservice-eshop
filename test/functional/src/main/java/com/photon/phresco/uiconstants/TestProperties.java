@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
+
 public class TestProperties {
 
 	public static Properties properties = new Properties();
@@ -36,7 +37,7 @@ public class TestProperties {
 		return theInstance;
 	}
 
-	void loadProperties(String paramString) throws IOException {
+	void loadProperties(String paramString) throws IOException {		
 		InputStream is = null;
 		try {
 			URL url = ClassLoader.getSystemResource(paramString);
@@ -48,12 +49,11 @@ public class TestProperties {
 			}
 		}
 	}
-
+	
 	public static void main(String[] args) throws IOException {
 		TestProperties instance = TestProperties.getInstance();
 		instance.loadPhrescoConfigProperties();
-		System.out.println(TestProperties.properties
-				.getProperty("PHOTON_PHRESCO_URL"));
+		System.out.println(TestProperties.properties.getProperty("PHOTON_PHRESCO_URL"));
 	}
 
 	public void loadPhrescoConfigProperties() throws IOException {

@@ -19,22 +19,21 @@
  */
 package com.photon.phresco.Screens;
 
-import java.io.IOException;
-
-import com.photon.phresco.selenium.util.ScreenException;
-
-public class PhotonAbstractScreen extends WebDriverAbstractBaseScreen {
-
-	// public PhrescoUiConstantsXml phrescoXml;
-
-	protected PhotonAbstractScreen()throws ScreenException {
-
+public class Category {
+	private int id;
+	public int getId() {
+		return id;
 	}
-
-	protected PhotonAbstractScreen( String browser,
-			String url,  String contextName) throws IOException,
-			Exception {
-		super(browser, url, contextName);
+	public void setId(int id) {
+		this.id = id;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	private String name;
+	
 
 }

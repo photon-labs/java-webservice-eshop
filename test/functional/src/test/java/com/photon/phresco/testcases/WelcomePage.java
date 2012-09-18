@@ -33,7 +33,7 @@ import org.junit.Test;
 import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
 
-public class JwsEshop extends TestCase {
+public class WelcomePage extends TestCase {
 
 	private PhrescoUiConstants phrsc;
 

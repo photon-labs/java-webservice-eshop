@@ -29,7 +29,7 @@ public class AllTest {
 
 	public static Test suite() {
 		TestSuite suite = new TestSuite(AllTest.class.getName());
-		suite.addTestSuite(JwsEshop.class);
+		suite.addTestSuite(WelcomePage.class);
 		suite.addTestSuite(RestApiCategories.class);
 		suite.addTestSuite(RestApiCategory1.class);
 		suite.addTestSuite(RestApiCategory2.class);

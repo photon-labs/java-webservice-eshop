@@ -20,6 +20,7 @@
 package com.photon.phresco.Screens;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import com.photon.phresco.selenium.util.GetCurrentDir;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
@@ -46,17 +47,18 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 	//
 	// }
 
-	protected AbstractBaseScreen(String host, int port, String browser,
+	protected AbstractBaseScreen(String host, int port, String browser, String selectedPlatform, 
 			String url, String speed, String contextName) throws IOException,
 			ScreenActionFailedException {
-		initalizeSelenium(host, port, browser, url, speed, contextName);
+		initalizeSelenium(host, port, browser, selectedPlatform, url, speed, contextName);
 	}
 
-	public static void initalizeSelenium(String host, int port, String browser,
+	public  void initalizeSelenium(String host, int port, String browser, String selectedPlatform, 
 			
 			String url, String speed, String contextName)
-			throws ScreenActionFailedException {
-		initialize(browser, url,contextName);
+			throws ScreenActionFailedException, MalformedURLException {
+		
+		initialize(browser, selectedPlatform, url,contextName);
 
 	}
 

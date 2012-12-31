@@ -22,11 +22,16 @@ package com.photon.phresco.Screens;
 import java.awt.AWTException;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,58 +39,59 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.photon.phresco.selenium.util.Constants;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
+import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
+import com.photon.phresco.uiconstants.PhrescoUiConstants;
 import com.thoughtworks.selenium.Selenium;
 
 public class BaseScreen {
 
-	// public static ScreenshottingSelenium selenium;
-	public static Selenium selenium;
-	public static WebDriver driver;
-	private static ChromeDriverService chromeService;
-	private static Log log = LogFactory.getLog("BaseScreen");
+	
+	public  Selenium selenium;
+	public  WebDriver driver;
+	private  ChromeDriverService chromeService;
+	private  Log log = LogFactory.getLog("BaseScreen");
+	DesiredCapabilities capabilities;
+	private PhrescoJwsUiConstants nodejs;
+	private  JSONObject json;
 
+		
 	public BaseScreen() {
 
 	}
 
-	public BaseScreen(String url, String browser, String reporter)
+	public BaseScreen(String url, String browser, String selectedPlatform, String reporter)
 			throws AWTException, IOException, ScreenActionFailedException {
 
 	}
 
-	public static void initialize(String browser,
+	public  void initialize(String browser, String selectedPlatform, 
 			String url,String context)
-			throws com.photon.phresco.selenium.util.ScreenActionFailedException {
+			throws com.photon.phresco.selenium.util.ScreenActionFailedException, MalformedURLException {
 
 		try {
-			instantiateBrowser(browser, url, context);
+			instantiateBrowser(browser, selectedPlatform, url, context);
 		} catch (ScreenException se) {
 			se.printStackTrace();
 		}
 
 	}
 
-	public static void instantiateBrowser(String browserName, String url,
-			String context) throws ScreenException {
-
+	public  void instantiateBrowser(String browserName, String selectedPlatform, String url,
+			String context) throws ScreenException, MalformedURLException {
+		URL server = new URL("http://localhost:4444/wd/hub/");
 		if (browserName.equalsIgnoreCase(Constants.BROWSER_CHROME)) {
 			try {
-				// "D:/Selenium-jar/chromedriver_win_19.0.1068.0/chromedriver.exe"
-				chromeService = new ChromeDriverService.Builder()
-						.usingChromeDriverExecutable(
-								new File(getChromeLocation()))
-						.usingAnyFreePort().build();
-				log.info("-------------***LAUNCHING GOOGLECHROME***--------------");
-				chromeService.start();
-				ChromeOptions chromeOption = new ChromeOptions();
-				chromeOption.addArguments("start-maximized");
-				driver = new ChromeDriver(chromeService, chromeOption);
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				driver.navigate().to(url + context);
+			
+				capabilities=new DesiredCapabilities();
+				capabilities.setBrowserName("chrome");
+				
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -93,23 +99,49 @@ public class BaseScreen {
 
 		} else if (browserName.equalsIgnoreCase(Constants.BROWSER_IE)) {
 			log.info("---------------***LAUNCHING INTERNET EXPLORE***-----------");
-			driver = new InternetExplorerDriver();
-			driver.navigate().to(url + context);
+
+			capabilities = new DesiredCapabilities();
+			capabilities.setBrowserName("iexplore");
+	
 
 		} else if (browserName.equalsIgnoreCase(Constants.BROWSER_FIREFOX)) {
 			log.info("-------------***LAUNCHING FIREFOX***--------------");
-			driver = new FirefoxDriver();
-			windowMaximizeFirefox();
-			driver.navigate().to(url + context);
+	
+			capabilities = new DesiredCapabilities();
+			capabilities.setBrowserName("firefox");
+			
 
 		} else {
 			throw new ScreenException(
-					"------Only FireFox,InternetExplore and Chrome works-----------");
+					
+					"------Only FireFox,InternetExplore and Chrome works-----------"+browserName);
 		}
+		
+		/**
+		 * These 3 steps common for all the browsers
+		 */
 
+
+		if (selectedPlatform.equalsIgnoreCase("WINDOWS")) {
+			capabilities.setCapability(CapabilityType.PLATFORM,
+					Platform.WINDOWS);
+			// break;
+		} else if (selectedPlatform.equalsIgnoreCase("LINUX")) {
+			capabilities.setCapability(CapabilityType.PLATFORM, Platform.LINUX);
+			// break;
+		} else if (selectedPlatform.equalsIgnoreCase("MAC")) {
+			capabilities.setCapability(CapabilityType.PLATFORM, Platform.MAC);
+			// break;
+		}
+		
+		driver = new RemoteWebDriver(server, capabilities);	
+		driver.get(url+context);
+		
 	}
+	
+	
 
-	public static void windowMaximizeFirefox() {
+	public  void windowMaximizeFirefox() {
 		driver.manage().window().setPosition(new Point(0, 0));
 		java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit()
 				.getScreenSize();
@@ -131,7 +163,7 @@ public class BaseScreen {
 
 	}
 
-	public static String getChromeLocation() {
+	public  String getChromeLocation() {
 		log.info("getChromeLocation:*****CHROME TARGET LOCATION FOUND***");
 		String directory = System.getProperty("user.dir");
 		String targetDirectory = getChromeFile();
@@ -139,7 +171,7 @@ public class BaseScreen {
 		return location;
 	}
 
-	public static String getChromeFile() {
+	public  String getChromeFile() {
 		if (System.getProperty("os.name").startsWith(Constants.WINDOWS_OS)) {
 			log.info("*******WINDOWS MACHINE FOUND*************");
 			// getChromeLocation("/chromedriver.exe");
@@ -155,5 +187,23 @@ public class BaseScreen {
 		}
 
 	}
+	
+	public void restApiGeneral(String serverURL,String context) throws MalformedURLException, InterruptedException {
+		System.out.println("**********Welcome to restApiCategories**************");
 
+		System.out.println("-------testing1--------");
+		System.out.println("***********restApiURL*************"+serverURL+context);
+		navigatePath(serverURL,context);
+		
+		
+	}
+
+	public void navigatePath(String serverURL,String context) throws InterruptedException, MalformedURLException
+	{	
+		System.out.println("-----testing2-------");
+	//	System.out.println("***********URL:--->"+URL+Context+AppendJSON+AppendJSON1);
+		driver.get(serverURL+context);
+		Thread.sleep(5000);
+	}
+	
 }

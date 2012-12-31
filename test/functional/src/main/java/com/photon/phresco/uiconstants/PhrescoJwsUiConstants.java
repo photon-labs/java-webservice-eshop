@@ -42,12 +42,9 @@ public class PhrescoJwsUiConstants {
 	public String CONTEXT_SPECIAL_PRODUCTS ="server.context.specialproducts";
 	
 	public String SPECIALPRODUCTS="stringCaptureSpecialProductsUrl";
-	public String  SEARCHMOBILE="stringCaptureSearchMobileUrl";
+	public String SEARCHMOBILE="stringCaptureSearchMobileUrl";
 	public String SEARCHCOMPUTER="stringCaptureSearchComputerUrl";
 	public String PRODUCTREVIEW="stringCaptureProductReviewUrl";
-	
-	
-	
 	public String ESHOP = "stringCaptureEshopUrl";
 	public String CONFIG = "stringCaptureConfigUrl";
 	public String CATEGORIES= "stringCaptureCategoriesUrl";

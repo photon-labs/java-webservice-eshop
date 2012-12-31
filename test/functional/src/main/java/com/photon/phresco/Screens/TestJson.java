@@ -20,49 +20,68 @@
 package com.photon.phresco.Screens;
 
 import java.io.IOException;
-import java.util.List;
 
-//import junit.framework.TestCase;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import bsh.Remote;
+
+import com.photon.phresco.testcases.RestApiCategories;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
 
-public class TestJson  {
+
+public class TestJson {
 
 	private PhrescoUiConstants phrsc;
 	private PhrescoJwsUiConstants nodejs;
-	private static String jsonStr;
-	private static JSONObject json;
-	private static JSONArray categoryJsonObj;
+	private  String jsonStr;
+	private  JSONObject json;
+	private  JSONArray categoryJsonObj;
 	private String contextName;
-
-	public static List<SearchResponse> configList = null;
-	public static List<SearchResponse> categoryList = null;
-	public static List<SearchResponse> categoryList1 = null;
-	public static List<SearchResponse> categoryList2 = null;
-	public static List<SearchResponse> categoryList3 = null;
-	public static List<SearchResponse> NewProductList = null;
-	public static List<SearchResponse> productList = null;
-	public static List<SearchResponse> ProductsList = null;
-	public static List<SearchResponse> computerList = null;
-	public static List<SearchResponse> MobileList = null;
-	public static List<SearchResponse> ProductReviewList = null;
-	public static List<SearchResponse> SpecialProductsList = null;
-
-	static SearchResponse response;
-	static JSONObject jObject = null;
+	WelcomeScreen wel;
 	
-	public void testCategories() throws Exception {
+
+	//private  WebDriver driver;
+
+	public  List<SearchResponse> configList = null;
+	public  List<SearchResponse> categoryList = null;
+	public  List<SearchResponse> categoryList1 = null;
+	public  List<SearchResponse> categoryList2 = null;
+	public  List<SearchResponse> categoryList3 = null;
+	public  List<SearchResponse> NewProductList = null;
+	public  List<SearchResponse> productList = null;
+	public  List<SearchResponse> ProductsList = null;
+	public  List<SearchResponse> computerList = null;
+	public  List<SearchResponse> MobileList = null;
+	public  List<SearchResponse> ProductReviewList = null;
+	public  List<SearchResponse> SpecialProductsList = null;
+
+	 SearchResponse response;
+	 JSONObject jObject = null;
+	
+	
+	
+	public void testCategories(String serverURL,PhrescoUiConstants phrsc,PhrescoJwsUiConstants nodejs) throws Exception {
 		response = new SearchResponse();
 		try {
-			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
-			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
-					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT +nodejs.CONTEXT_REST_API+nodejs.CONTEXT_CATEGORIES);
-		} catch (IOException e) {
+					
+			System.out.println("--------------> Method testCategories--------->");
+			//phrsc = new PhrescoUiConstants();
+    		//nodejs = new PhrescoJwsUiConstants();
+    		System.out.println("--------------> Server URL: --------->"+serverURL+ phrsc.CONTEXT+nodejs.CONTEXT_REST_API+nodejs.CONTEXT_CATEGORIES);
+    		//navigatePath(serverURL, phrsc.CONTEXT, nodejs. CONTEXT_REST_API,nodejs.CONTEXT_CATEGORIES);
+    	//	wel.testGeneral();
+    		jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
+				+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT +nodejs.CONTEXT_REST_API+nodejs.CONTEXT_CATEGORIES);
+		} catch (Exception e) {
 
 			e.printStackTrace();
 		}
@@ -80,19 +99,18 @@ public class TestJson  {
 			++j;
 			}
 			System.out.println("****Category id "+ (j)+ " doesn't exist****");
-			
-			
-			
-			
+
 		}
 	}
+
+	 
 
 	public void testCategory1( ) throws Exception {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
     		nodejs = new PhrescoJwsUiConstants();
-			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
+    		jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc. CONTEXT+ nodejs.CONTEXT_REST_API+nodejs. CONTEXT_CATEGORY1);
 		} catch (IOException e) {
 

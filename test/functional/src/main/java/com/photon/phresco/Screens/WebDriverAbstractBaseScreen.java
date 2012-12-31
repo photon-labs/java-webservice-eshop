@@ -2,6 +2,7 @@ package com.photon.phresco.Screens;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.activity.InvalidActivityException;
 
@@ -15,12 +16,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 import com.google.common.base.Function;
 
 import com.photon.phresco.selenium.util.GetCurrentDir;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
+import com.photon.phresco.testcases.RestApiCategories;
 
 
 /**
@@ -34,6 +37,7 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 	private final static int TIMEOUT = 25000;
 	private By by;
 	private WebDriverWait wait;
+	RestApiCategories restApi;
 
 	/**
 	 * This constructor will check the driver object value.
@@ -57,12 +61,17 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 	 * @param context
 	 * @throws ScreenException
 	 * @throws ScreenActionFailedException
+	 * @throws MalformedURLException 
 	 */
 	public WebDriverAbstractBaseScreen(
-			String browserName, String url, String context)
-			throws ScreenException, ScreenActionFailedException {
+			String browserName, String selectedPlatform, String url, String context)
+			throws ScreenException, ScreenActionFailedException, MalformedURLException {
 		log.info("Entering:********WebDriverAbstractBaseScreen parameter Constructor********");
-		initialize(browserName, url,context);
+	//if(methodName=="testCategory1")
+		
+		initialize(browserName, selectedPlatform, url,context);
+	//else
+	//	System.out.println("********Welcome to Next Class");
 	}
 
 	/**
@@ -401,7 +410,7 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 		
 	}
 	
-	public boolean isTextPresent(String name,String methodName) throws IOException, Exception,ScreenException{
+	/*public boolean isTextPresent(String name,String methodName) throws IOException, Exception,ScreenException{
 //		String sourceCode=driver.getPageSource();
 		System.out.println("-------textvalue"+name);
 		WebElement ele=driver.findElement(getTagByValue("body"));
@@ -425,11 +434,20 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 		}
 		return true;
 	}
-	
+	*/
 		
-		
-		
-		
+	public void isTextPresent(String text,String methodName ) throws IOException, Exception {
+		if (text!= null){
+		boolean value=driver.findElement(By.tagName("body")).getText().contains(text);	
+		Assert.assertTrue(value);   
+	    
+	    }
+		else
+		{
+			File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		    FileUtils.copyFile(scrFile, new File(GetCurrentDir.getCurrentDirectory()+"\\" + methodName + ".png"));
+		}
+	}
 		
 	}
 

@@ -21,16 +21,20 @@ package com.photon.phresco.Screens;
 
 import java.io.IOException;
 
+
 import org.apache.commons.lang.StringUtils;
 
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 
 public class WelcomeScreen extends PhotonAbstractScreen {
 	private PhrescoJwsUiConstants phrsc = new PhrescoJwsUiConstants();
+	private PhrescoJwsUiConstants nodejs;
+	
 
-	public WelcomeScreen(String browser, String url, String contextName)
+	public WelcomeScreen(String selectedBrowser, String selectedPlatform, String url, String contextName)
 			throws InterruptedException, IOException, Exception {
-		super(browser, url, contextName);
+		super(selectedBrowser, selectedPlatform, url, contextName);
+
 
 		/*
 		 * waitForElementPresent(phrsc.HOME); click(phrsc.HOME);
@@ -74,8 +78,10 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 					.getMethodName();
 			;
 		}
+		System.out.println("***********TEXT:*************"+phrsc.CATEGORIES);
 		isTextPresent(phrsc.CATEGORIES, methodName);
-
+		Thread.sleep(5000);
+		
 	}
 
 	public void JwsProducts(String methodName) throws InterruptedException,
@@ -97,7 +103,9 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 					.getMethodName();
 			;
 		}
+		Thread.sleep(5000);
 		isTextPresent(phrsc.CATEGORY1, methodName);
+		
 
 	}
 
@@ -169,5 +177,6 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 		// waitForTextPresent(phrsc.PRODUCTREVIEW);
 
 	}
+	
 
 }

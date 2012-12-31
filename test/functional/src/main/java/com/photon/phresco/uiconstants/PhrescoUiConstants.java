@@ -27,7 +27,7 @@ public class PhrescoUiConstants {
 	private ReadXMLFile readXml;
 
 
-	public String BROWSER = "Browser";
+	//public String BROWSER = "Browser";
     public String HOST = "host";
 	public String PORT = "port";
 	public String PROTOCOL = "protocol";
@@ -37,13 +37,13 @@ public class PhrescoUiConstants {
 
 	
 
- 	private static PhrescoUiConstants instance;
+ /*	private  PhrescoUiConstants instance;
 
 	public static PhrescoUiConstants getInstance() {
 		if (instance == null)
 			instance = new PhrescoUiConstants();
 		return instance;
-	}
+	}*/
 
 	public PhrescoUiConstants() {
 	

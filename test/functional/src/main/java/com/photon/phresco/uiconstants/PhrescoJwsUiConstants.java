@@ -61,7 +61,7 @@ public class PhrescoJwsUiConstants {
 		try {
 		    readXml = new ReadXMLFile();
 		    readXml.JwsData();
-		    System.out.println("*********Reading Data from NodejsData**********");
+		    System.out.println("*********Reading Data from JavawebservicesData**********");
 			Field[] arrayOfField1 = super.getClass().getFields();
 			Field[] arrayOfField2 = arrayOfField1;
 			int i = arrayOfField2.length;

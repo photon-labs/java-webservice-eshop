@@ -23,7 +23,6 @@ import com.google.common.base.Function;
 import com.photon.phresco.selenium.util.GetCurrentDir;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
-import com.photon.phresco.testcases.RestApiCategories;
 
 
 /**
@@ -37,7 +36,6 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 	private final static int TIMEOUT = 25000;
 	private By by;
 	private WebDriverWait wait;
-	RestApiCategories restApi;
 
 	/**
 	 * This constructor will check the driver object value.
@@ -409,32 +407,6 @@ public class WebDriverAbstractBaseScreen extends BaseScreen {
 		}
 		
 	}
-	
-	/*public boolean isTextPresent(String name,String methodName) throws IOException, Exception,ScreenException{
-//		String sourceCode=driver.getPageSource();
-		System.out.println("-------textvalue"+name);
-		WebElement ele=driver.findElement(getTagByValue("body"));
-		String name1=ele.getText();
-		String[] name2=name1.split(",");
-		
-		for(String name3:name2){
-			name3.trim();			
-		//	System.out.println("pagesource code---------->"+name3);
-			if(name3.endsWith(name)){
-			//	System.out.println("-------------BREAK-------------");
-				break;
-			}
-			else{
-				
-				File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-			    FileUtils.copyFile(scrFile, new File(GetCurrentDir.getCurrentDirectory()+"\\" + methodName + ".png"));
-				
-			}
-			
-		}
-		return true;
-	}
-	*/
 		
 	public void isTextPresent(String text,String methodName ) throws IOException, Exception {
 		if (text!= null){

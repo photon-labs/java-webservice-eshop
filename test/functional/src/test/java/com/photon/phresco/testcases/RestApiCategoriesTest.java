@@ -39,7 +39,7 @@ import com.photon.phresco.Screens.WelcomeScreen;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
 
-public class RestApiCategories {
+public class RestApiCategoriesTest {
 
 	private PhrescoJwsUiConstants jws;
 	private int SELENIUM_PORT;

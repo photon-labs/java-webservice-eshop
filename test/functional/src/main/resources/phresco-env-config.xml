@@ -16,21 +16,32 @@
   See the License for the specific language governing permissions and
   limitations under the License.
   ###
-  -->
-<environment>
+  --><environment>
 
 	<!-- <Browser>firefox</Browser> -->
 		
-	<Server appliesTo="tech-java-webservice" desc="" name="server">
-		<context>eshop</context>
-		<admin_username/>
-		<deploy_dir/>
-		<additional_context>/</additional_context>
-		<port>2020</port>
-		<admin_password/>
-		<version>0.6.x</version>
-		<type>NodeJS</type>
-		<protocol>http</protocol>
-		<host>172.16.17.180</host>
-	</Server>
+	
+<Browser/>
+    
+
+
+
+
+
+
+
+<Server desc="" name="server">
+        <context>javaeshop</context>
+        <admin_username/>
+        <deploy_dir>c</deploy_dir>
+        <additional_context/>
+        <port>3030</port>
+        <admin_password/>
+        <version>7.0.x</version>
+        <certificate/>
+        <type>Apache Tomcat</type>
+        <remoteDeployment>false</remoteDeployment>
+        <host>localhost</host>
+        <protocol>http</protocol>
+    </Server>
 </environment>

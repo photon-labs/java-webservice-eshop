@@ -33,18 +33,6 @@ public class PhrescoUiConstants {
 	public String PROTOCOL = "protocol";
 	public String CONTEXT = "context";
 
-	//public String ELEMENT = "stringCapturehelloworldUrl";
-
-	
-
- /*	private  PhrescoUiConstants instance;
-
-	public static PhrescoUiConstants getInstance() {
-		if (instance == null)
-			instance = new PhrescoUiConstants();
-		return instance;
-	}*/
-
 	public PhrescoUiConstants() {
 	
 			try {

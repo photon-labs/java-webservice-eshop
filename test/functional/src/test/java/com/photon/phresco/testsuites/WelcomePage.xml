@@ -6,15 +6,15 @@
 		<parameter name="browser" value="googlechrome" />
 		<parameter name="platform" value="WINDOWS" />
 		<classes>
-			<class name="com.photon.phresco.testcases.RestApiCategories" />
+			<class name="com.photon.phresco.testcases.RestApiCategoriesTest" />
 		</classes>
 	</test>
-	<test name="VerifyWelcomePageOnChrome2" junit="false"
+	<test name="VerifyWelcomePageOnfirefox" junit="false"
 		preserve-order="true">
 		<parameter name="browser" value="firefox" />
 		<parameter name="platform" value="WINDOWS" />
 		<classes>
-			<class name="com.photon.phresco.testcases.RestApiCategories" />
+			<class name="com.photon.phresco.testcases.RestApiCategoriesTest" />
 		</classes>
 	</test>
 </suite>

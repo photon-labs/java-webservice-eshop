@@ -20,20 +20,11 @@
 package com.photon.phresco.Screens;
 
 import java.io.IOException;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import bsh.Remote;
-
-import com.photon.phresco.testcases.RestApiCategories;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
 

@@ -20,19 +20,16 @@
 package com.photon.phresco.Screens;
 
 import java.util.Iterator;
-
 import java.util.List;
 import java.util.Set;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.google.common.base.Function;
 import com.photon.phresco.selenium.util.ScreenException;
 
 public class WebDriverBaseScreen extends WebDriverAbstractBaseScreen {
@@ -110,17 +107,13 @@ public class WebDriverBaseScreen extends WebDriverAbstractBaseScreen {
 	
 	public void accept() throws InterruptedException{
 		
-	//	String parentWindowHandle = driver.getWindowHandle(); // save the current window handle.
 	      WebDriver popup = null;
-	      //String windowname=driver.getWindowHandle();
 	      	Set<String> windowname=driver.getWindowHandles();
 	      	Iterator<String> window=windowname.iterator();
 	      
 	      while(window.hasNext()) { 
 	        String windowHandle = window.next();	      
 	        popup = driver.switchTo().window(windowHandle); 
-//	        driver.switchTo().defaultContent().switchTo().frame("windowHandle");
-
 	        System.out.println("------------------POP-UP WINDOW NAME---->"+popup.getTitle().toString());
 	        if (popup.getTitle().toString().equalsIgnoreCase("")) {
 	        	  popup.findElement(By.name("OK")).click();
@@ -130,20 +123,6 @@ public class WebDriverBaseScreen extends WebDriverAbstractBaseScreen {
 	      }
 	}
 	
-	/*public void accept2() throws InterruptedException{
-		String name=driver.getWindowHandle();
-		
-		WebDriver windowname=driver.switchTo().window("Opening barcode-labels");
-		System.out.println("--------------Window name--------->"+windowname.getTitle());
-		windowname.findElement(By.name("Cancel"));
-		Thread.sleep(5000);
-	}*/
-
-		
-	
-	
-	
-		
 	}
 	
 	

@@ -35,17 +35,7 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 			throws InterruptedException, IOException, Exception {
 		super(selectedBrowser, selectedPlatform, url, contextName);
 
-
-		/*
-		 * waitForElementPresent(phrsc.HOME); click(phrsc.HOME);
-		 */
-
 	}
-
-	// public static void main (String args[]) throws JSONException {
-	// TestJson json = new TestJson();
-
-	// }
 
 	public void JwsEshop(String methodName) throws InterruptedException,
 			IOException, Exception {
@@ -163,7 +153,6 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 			;
 		}
 		isTextPresent(phrsc.SEARCHMOBILE, methodName);
-		// System.out.println("==========================================");
 
 	}
 
@@ -174,7 +163,6 @@ public class WelcomeScreen extends PhotonAbstractScreen {
 	}
 
 	public void JwsReviewProduct() throws Exception, IOException {
-		// waitForTextPresent(phrsc.PRODUCTREVIEW);
 
 	}
 	

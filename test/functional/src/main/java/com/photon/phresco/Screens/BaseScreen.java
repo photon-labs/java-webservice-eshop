@@ -20,25 +20,18 @@
 package com.photon.phresco.Screens;
 
 import java.awt.AWTException;
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -47,7 +40,6 @@ import com.photon.phresco.selenium.util.Constants;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
 import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
-import com.photon.phresco.uiconstants.PhrescoUiConstants;
 import com.thoughtworks.selenium.Selenium;
 
 public class BaseScreen {
@@ -87,6 +79,7 @@ public class BaseScreen {
 			String context) throws ScreenException, MalformedURLException {
 		URL server = new URL("http://localhost:4444/wd/hub/");
 		if (browserName.equalsIgnoreCase(Constants.BROWSER_CHROME)) {
+			log.info("-------------***LAUNCHING CHROME***--------------");
 			try {
 			
 				capabilities=new DesiredCapabilities();
@@ -189,9 +182,7 @@ public class BaseScreen {
 	}
 	
 	public void restApiGeneral(String serverURL,String context) throws MalformedURLException, InterruptedException {
-		System.out.println("**********Welcome to restApiCategories**************");
-
-		System.out.println("-------testing1--------");
+		
 		System.out.println("***********restApiURL*************"+serverURL+context);
 		navigatePath(serverURL,context);
 		
@@ -200,8 +191,7 @@ public class BaseScreen {
 
 	public void navigatePath(String serverURL,String context) throws InterruptedException, MalformedURLException
 	{	
-		System.out.println("-----testing2-------");
-	//	System.out.println("***********URL:--->"+URL+Context+AppendJSON+AppendJSON1);
+		
 		driver.get(serverURL+context);
 		Thread.sleep(5000);
 	}

@@ -40,12 +40,7 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		}
 	}
 
-	// protected AbstractBaseScreen(String host,int port,String browser, String
-	// url, String speed,String context) throws IOException,
-	// ScreenActionFailedException {
-	// initalizeSelenium(host, port, browser, url, speed, context);
-	//
-	// }
+	
 
 	protected AbstractBaseScreen(String host, int port, String browser, String selectedPlatform, 
 			String url, String speed, String contextName) throws IOException,
@@ -75,12 +70,7 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 	 *             </p>
 	 */
 	@Deprecated
-	/*
-	 * public void closeAllTabs() throws InterruptedException {
-	 * msg("AbstractBaseScreen.closeAllTabs close all current Tabs");
-	 * clickAt(photonUiConstants.CS_BUTTON_CLOSE_ALL_TABS, "");
-	 * waitForElementPresent(photonUiConstants.CS_FRONT_PAGE_LOGO); }
-	 */
+	
 	protected void contextMenuAt(String link, String value) throws Exception {
 		waitForElementPresent(link);
 		waitForContextMenuAt(link, value);
@@ -139,8 +129,6 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 				throw new Exception("timeout: Element " + link
 						+ " is not present");
 			try {
-				// if
-				// (selenium.isElementPresent(photonUiConstants.CS_LINK_DELETE))
 				break;
 			} catch (Exception e) {
 			}
@@ -164,14 +152,9 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 	@Deprecated
 	public void logout() throws InterruptedException {
 		msg("AbstractBaseScreen.logout: Logout from PHRESCO");
-		// start the logout process ...
 		selenium.selectFrame("relative=up");
 		selenium.selectFrame("HEADER");
-		/*
-		 * selenium.click(phrsc.CS_LINK_LOG_OFF);
-		 * waitForElementPresent(phrsc.CS_FIELD_USER);
-		 * selenium.click(phrsc.CS_FIELD_USER);
-		 */
+		
 	}
 
 	protected void clickOnLink(String elemName) throws Exception {
@@ -478,7 +461,6 @@ public abstract class AbstractBaseScreen extends BaseScreen {
 		}
 
 		return check;
-		// click(objectXpath);
 
 	}
 }

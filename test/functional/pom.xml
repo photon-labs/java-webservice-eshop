@@ -127,7 +127,7 @@
 						<phase>compile</phase>
 						<configuration>
 							<tasks>
-								<chmod file="${project.basedir}/chromedriver/mac/chromedriver"
+								<chmod file="${project.basedir}/chromedriver/chromedriver"
 									perm="777" />
 							</tasks>
 						</configuration>

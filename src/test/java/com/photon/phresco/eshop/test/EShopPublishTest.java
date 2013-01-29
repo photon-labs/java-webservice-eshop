@@ -38,7 +38,7 @@ public class EShopPublishTest {
 	public void setUp() throws Exception {
 	}
 
-	@Ignore
+	@Test
 	public void testPublishEShopData() {
 		try {
 			eshopPublish.publishEShopData();

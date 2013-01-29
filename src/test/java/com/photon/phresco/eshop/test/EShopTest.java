@@ -44,7 +44,7 @@ public class EShopTest {
 	public void setUp() throws Exception {
 	}
 
-	@Ignore
+	@Test
 	public void testGetCategories() {
 		try {
 			List<Category> categories = eshop.getCategories();
@@ -60,7 +60,7 @@ public class EShopTest {
 		}
 	}
 
-	@Ignore
+	@Test
 	public void testGetProducts() {
 		try {
 			List<Product> products = eshop.getProducts(1);

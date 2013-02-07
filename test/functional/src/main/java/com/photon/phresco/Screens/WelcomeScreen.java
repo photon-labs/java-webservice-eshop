@@ -24,11 +24,11 @@ import java.io.IOException;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
+import com.photon.phresco.uiconstants.PhrescoJavaWebserviceUiConstants;
 
 public class WelcomeScreen extends PhotonAbstractScreen {
-	private PhrescoJwsUiConstants phrsc = new PhrescoJwsUiConstants();
-	private PhrescoJwsUiConstants nodejs;
+	private PhrescoJavaWebserviceUiConstants phrsc = new PhrescoJavaWebserviceUiConstants();
+	private PhrescoJavaWebserviceUiConstants nodejs;
 	
 
 	public WelcomeScreen(String selectedBrowser, String selectedPlatform, String url, String contextName)

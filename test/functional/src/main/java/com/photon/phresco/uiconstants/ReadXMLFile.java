@@ -40,7 +40,7 @@ public class ReadXMLFile {
 	private  Element eElement;
 	private Log log = LogFactory.getLog(getClass());
 	private  final String phrsc = "./src/main/resources/phresco-env-config.Xml";
-	private  final String jws = "./src/main/resources/JwsData.xml";
+	private  final String jws = "./src/main/resources/JavaWebserviceData.xml";
 	private  final String jwsui = "./src/main/resources/UIConstants.xml";
 	private  final String jwsinfo = "./src/main/resources/UserInfo.xml";
 	

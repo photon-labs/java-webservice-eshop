@@ -25,14 +25,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
+import com.photon.phresco.uiconstants.PhrescoJavaWebserviceUiConstants;
 import com.photon.phresco.uiconstants.PhrescoUiConstants;
 
 
 public class TestJson {
 
 	private PhrescoUiConstants phrsc;
-	private PhrescoJwsUiConstants nodejs;
+	private PhrescoJavaWebserviceUiConstants nodejs;
 	private  String jsonStr;
 	private  JSONObject json;
 	private  JSONArray categoryJsonObj;
@@ -60,7 +60,7 @@ public class TestJson {
 	
 	
 	
-	public void testCategories(String serverURL,PhrescoUiConstants phrsc,PhrescoJwsUiConstants nodejs) throws Exception {
+	public void testCategories(String serverURL,PhrescoUiConstants phrsc,PhrescoJavaWebserviceUiConstants nodejs) throws Exception {
 		response = new SearchResponse();
 		try {
 					
@@ -100,7 +100,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
     		jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc. CONTEXT+ nodejs.CONTEXT_REST_API+nodejs. CONTEXT_CATEGORY1);
 		} catch (IOException e) {
@@ -125,7 +125,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc. CONTEXT+ nodejs.CONTEXT_REST_API+nodejs. CONTEXT_CATEGORY2);
 		} catch (IOException e) {
@@ -150,7 +150,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT+ nodejs.CONTEXT_REST_API+nodejs. CONTEXT_CATEGORY3);
 		} catch (IOException e) {
@@ -175,7 +175,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" +  phrsc.CONTEXT + nodejs.CONTEXT_REST_API + nodejs.CONTEXT_NEWPRODUCTS);
 		} catch (IOException e) {
@@ -196,7 +196,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT + nodejs.CONTEXT_REST_API + nodejs.CONTEXT_SEARCHMOBILE);
 		} catch (IOException e) {
@@ -217,7 +217,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT + nodejs.CONTEXT_REST_API +  nodejs.CONTEXT_SEARCHCOUMPUTER);
 		} catch (IOException e) {
@@ -235,7 +235,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT+nodejs.CONTEXT_REST_API+nodejs.CONTEXT_PRODUCTS);
 		} catch (IOException e) {
@@ -260,7 +260,7 @@ public class TestJson {
 		response = new SearchResponse();
 		try {
 			phrsc = new PhrescoUiConstants();
-    		nodejs = new PhrescoJwsUiConstants();
+    		nodejs = new PhrescoJavaWebserviceUiConstants();
 			jObject = response.getCategoryJSONObject(phrsc.PROTOCOL + "://"
 					+ phrsc.HOST + ":" + phrsc.PORT + "/" + phrsc.CONTEXT+nodejs.CONTEXT_REST_API+nodejs.CONTEXT_SPECIAL_PRODUCTS);
 		} catch (IOException e) {

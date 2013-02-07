@@ -39,7 +39,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import com.photon.phresco.selenium.util.Constants;
 import com.photon.phresco.selenium.util.ScreenActionFailedException;
 import com.photon.phresco.selenium.util.ScreenException;
-import com.photon.phresco.uiconstants.PhrescoJwsUiConstants;
+import com.photon.phresco.uiconstants.PhrescoJavaWebserviceUiConstants;
 import com.thoughtworks.selenium.Selenium;
 
 public class BaseScreen {
@@ -50,7 +50,7 @@ public class BaseScreen {
 	private  ChromeDriverService chromeService;
 	private  Log log = LogFactory.getLog("BaseScreen");
 	DesiredCapabilities capabilities;
-	private PhrescoJwsUiConstants nodejs;
+	private PhrescoJavaWebserviceUiConstants nodejs;
 	private  JSONObject json;
 
 		

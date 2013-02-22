@@ -36,7 +36,10 @@ public class Constants {
 	 * Execute tests on googlechrome browser
 	 */
 	public static final String BROWSER_CHROME = "googlechrome";
-	
+	/**
+	 * Execute tests on opera browser
+	 */
+	public static final String BROWSER_OPERA = "opera";
 	/**
 	 * Execute tests on safari browser
 	 */

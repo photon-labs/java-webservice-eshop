@@ -79,30 +79,58 @@ public class BaseScreen {
 			String context) throws ScreenException, MalformedURLException {
 		URL server = new URL("http://localhost:4444/wd/hub/");
 		if (browserName.equalsIgnoreCase(Constants.BROWSER_CHROME)) {
-			log.info("-------------***LAUNCHING CHROME***--------------");
+			log.info("-------------***LAUNCHING GOOGLECHROME***--------------");
 			try {
-			
-				capabilities=new DesiredCapabilities();
+				capabilities = new DesiredCapabilities();
 				capabilities.setBrowserName("chrome");
-				
-
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 
 		} else if (browserName.equalsIgnoreCase(Constants.BROWSER_IE)) {
 			log.info("---------------***LAUNCHING INTERNET EXPLORE***-----------");
+			try {
+				capabilities = new DesiredCapabilities();
+				capabilities.setJavascriptEnabled(true);
+				capabilities.setBrowserName("iexplorer");
+				} catch (Exception e) {
+					e.printStackTrace();
+			}
+		}
+			
+			else if (browserName.equalsIgnoreCase(Constants.BROWSER_OPERA)) {
+				log.info("-------------***LAUNCHING OPERA***--------------");
+				try {
+				capabilities = new DesiredCapabilities();
+				capabilities.setBrowserName("opera");
+				capabilities.setCapability("opera.autostart ",true);
 
-			capabilities = new DesiredCapabilities();
-			capabilities.setBrowserName("iexplore");
+				System.out.println("-----------checking the OPERA-------");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+		
+		} 
+			else if (browserName.equalsIgnoreCase(Constants.BROWSER_SAFARI)) {
+				log.info("-------------***LAUNCHING SAFARI***--------------");
+				try {
+					
+			    capabilities = new DesiredCapabilities();
+				capabilities.setBrowserName("safari");
+			System.out.println("-----------checking the SAFARI-------");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 	
-
 		} else if (browserName.equalsIgnoreCase(Constants.BROWSER_FIREFOX)) {
 			log.info("-------------***LAUNCHING FIREFOX***--------------");
-	
-			capabilities = new DesiredCapabilities();
-			capabilities.setBrowserName("firefox");
-			
+				try {
+				
+				capabilities = new DesiredCapabilities();
+				capabilities.setBrowserName("firefox");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
 		} else {
 			throw new ScreenException(

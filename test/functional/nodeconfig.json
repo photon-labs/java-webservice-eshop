@@ -26,6 +26,13 @@
           "maxInstances": 5,
           "seleniumProtocol": "WebDriver"
         }
+		{
+         
+          "browserName": "htmlunit",
+          "maxInstances": 1,
+		  "seleniumProtocol": "WebDriver"
+        }
+		
       ],
   "configuration":
   {

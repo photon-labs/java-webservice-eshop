@@ -25,7 +25,7 @@ public class Constants {
 	/**
 	 * Execute tests on internet explorer
 	 */
-	public static final String BROWSER_IE = "iexplorer";
+	public static final String BROWSER_IE = "iexplore";
 
 	/**
 	 * Execute tests on firefox browser
@@ -43,7 +43,9 @@ public class Constants {
 	/**
 	 * Execute tests on safari browser
 	 */
-	public static final String BROWSER_SAFARI = "safari";
+	public static final String BROWSER_SAFARI = "*safari";
+	
+	public static final String HTML_UNIT_DRIVER = "htmlunit";
 
 	public static String DEFAULT_TIMEOUT = "180000";
 

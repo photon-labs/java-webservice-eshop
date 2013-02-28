@@ -31,17 +31,17 @@
 
 
 <Server desc="" name="server">
-        <context>javaeshop</context>
+        <context>eshop</context>
         <admin_username/>
         <deploy_dir>c</deploy_dir>
         <additional_context/>
-        <port>3030</port>
+        <port>2020</port>
         <admin_password/>
         <version>7.0.x</version>
         <certificate/>
         <type>Apache Tomcat</type>
         <remoteDeployment>false</remoteDeployment>
-        <host>localhost</host>
+        <host>172.16.17.180</host>
         <protocol>http</protocol>
     </Server>
 </environment>

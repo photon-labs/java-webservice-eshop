@@ -5,7 +5,7 @@
     <artifactId>PHR_JavaWebService</artifactId>
     <packaging>war</packaging>
     <name>PHR_JavaWebService</name>
-    <version>2.1.0.1004-SNAPSHOT</version>
+    <version>2.1.0.2000</version>
 	<inceptionYear>1999</inceptionYear>
     <organization>
         <name>Photon Infotech Inc.</name>
@@ -20,7 +20,7 @@
             <plugin>
                 <groupId>com.photon.phresco.plugins</groupId>
                 <artifactId>java-maven-plugin</artifactId>
-                <version>2.1.0.1004-SNAPSHOT</version>
+                <version>2.1.0.2000</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>

@@ -32,6 +32,10 @@
           "maxInstances": 1,
 		  "seleniumProtocol": "WebDriver"
         }
+<<<<<<< HEAD
+=======
+		
+>>>>>>> 850f56d7be204072b4aa9ae52babbccd5b09ade4
       ],
   "configuration":
   {

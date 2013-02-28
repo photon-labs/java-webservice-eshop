@@ -121,9 +121,9 @@
 								</artifactItem>
 								 <artifactItem>
 							
-												 <groupId>org.seleniumhq.selenium</groupId>
-                                               <artifactId>selenium-htmlunit-driver</artifactId>
-                                            <version>2.29.1</version>
+									<groupId>org.seleniumhq.selenium</groupId>
+                                     <artifactId>selenium-htmlunit-driver</artifactId>
+												<version>2.29.0</version>
 												<overWrite>false</overWrite>
 											    <outputDirectory>${project.basedir}/lib</outputDirectory>
 		

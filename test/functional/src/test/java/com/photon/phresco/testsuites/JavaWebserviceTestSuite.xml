@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="WelcomePageTestSuite" parallel="tests" thread-count="10"
 	verbose="3">
-	<test name="VerifyWelcomePageOnHtmlUnit" junit="false"
+ 	 <test name="VerifyWelcomePageOnfirefox" junit="false" 
+		preserve-order="true">
+		<parameter name="browser" value="firefox" />
+		<parameter name="platform" value="WINDOWS" />
+		<classes>
+			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
+		</classes>
+	</test> 
+	<test name="VerifyWelcomePageOnChrome" junit="false"
+		preserve-order="true">
+		<parameter name="browser" value="googlechrome" />
+		<parameter name="platform" value="WINDOWS" />
+		<classes>
+			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
+		</classes>
+	</test>
+	<test name="VerifyWelcomePageOnHTMLUnit" junit="false"
 		preserve-order="true">
 		<parameter name="browser" value="htmlunit" />
 		<parameter name="platform" value="WINDOWS" />
@@ -9,13 +25,5 @@
 			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
 		</classes>
 	</test>
- 	<!-- <test name="VerifyWelcomePageOnfirefox" junit="false"
-		preserve-order="true">
-		<parameter name="browser" value="firefox" />
-		<parameter name="platform" value="WINDOWS" />
-		<classes>
-			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
-		</classes>
-	</test>  -->
 </suite>
  

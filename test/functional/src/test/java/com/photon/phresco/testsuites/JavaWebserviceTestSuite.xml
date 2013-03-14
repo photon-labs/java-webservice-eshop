@@ -9,13 +9,21 @@
 			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
 		</classes>
 	</test>
- 	<!-- <test name="VerifyWelcomePageOnfirefox" junit="false"
+ 	<test name="VerifyWelcomePageOnfirefox" junit="false"
 		preserve-order="true">
 		<parameter name="browser" value="firefox" />
 		<parameter name="platform" value="WINDOWS" />
 		<classes>
 			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
 		</classes>
-	</test>  -->
+	</test>  
+		<test name="VerifyWelcomePageGooglechrome" junit="false"
+		preserve-order="true">
+		<parameter name="browser" value="googlechrome" />
+		<parameter name="platform" value="WINDOWS" />
+		<classes>
+			<class name="com.photon.phresco.testcases.JavaWebServiceTest" />
+		</classes>
+	</test>  
 </suite>
  

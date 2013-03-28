@@ -17,13 +17,7 @@
         <testSourceDirectory>${testSourceDirectory}</testSourceDirectory>
         <finalName>service</finalName>
         <plugins>
-            <plugin>
-                <groupId>com.photon.phresco.plugins</groupId>
-                <artifactId>java-maven-plugin</artifactId>
-                <version>2.2.0.2002-SNAPSHOT</version>
-                <extensions>true</extensions>
-            </plugin>
-            <plugin>
+             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>tomcat-maven-plugin</artifactId>
                 <version>1.1</version>
@@ -34,22 +28,6 @@
                     <url xmlns:ns2="http://maven.apache.org/POM/4.0.0" xmlns="">http://${server.host}:${server.port}/manager/html</url>
                     <path xmlns:ns2="http://maven.apache.org/POM/4.0.0" xmlns="">/${project.build.finalName}</path>
                     <argLine xmlns:ns2="http://maven.apache.org/POM/4.0.0" xmlns="">-Xmx512m</argLine>
-                </configuration>
-            </plugin>
-			<plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <version>1.1</version>
-                <configuration>
-                   <verbose>false</verbose>
-                   <processStartTag>###</processStartTag>
-                   <processEndTag>###</processEndTag>
-                  <!-- <sectionDelimiter>" "</sectionDelimiter> -->
-                   <licenseName>apache_v2</licenseName>
-				   <roots>
-				   <root>source</root>
-				   <root>test</root>
-				   </roots>
                 </configuration>
             </plugin>
         </plugins>

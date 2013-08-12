@@ -22,5 +22,5 @@
             <dbname>jwsdb</dbname>
             <username>root</username>
         </Database>
-    
+    </environment>
  </environments>

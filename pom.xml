@@ -10,7 +10,6 @@
     <organization>
         <name>Photon Infotech Inc.</name>
     </organization>
-    <description>Sample Web Service(REST)</description>
     <build>
         <directory>do_not_checkin/target</directory>
 		<sourceDirectory>${phresco.source.directory}</sourceDirectory>

@@ -1,5 +1,5 @@
 <environments>
-   <environment appliesTo="" default="false" desc="Production Environment is used for Development purpose only" name="Production">
+   <environment appliesTo="" default="true" desc="Production Environment is used for Development purpose only" name="Production">
         <Server desc="Server Configuration for Javawebservice Eshop application" name="Server Configuration">
             <context>javawebserviceeshop</context>
             <admin_username/>

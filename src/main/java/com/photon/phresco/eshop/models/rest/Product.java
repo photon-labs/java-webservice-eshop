@@ -34,6 +34,7 @@ public class Product {
 	private String image;
 	private String detailImage;
 	private int rating;
+	private ProductDetails details;
 
 	public Product() {
 
@@ -41,7 +42,7 @@ public class Product {
 
 	public Product(int id, String name, int category, String model,
 			int specialProduct, int newProduct, double listPrice, double sellPrice,
-			String description, String image, String detailImage) {
+			String description, String image, String detailImage, ProductDetails details) {
 		this.id = id;
 		this.name = name;
 		this.category = category;
@@ -53,6 +54,7 @@ public class Product {
 		this.description = description;
 		this.image = image;
 		this.detailImage = detailImage;
+		this.details = details;
 	}
 
 	/**
@@ -221,6 +223,14 @@ public class Product {
 	 */
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+
+	public void setDetails(ProductDetails details) {
+		this.details = details;
+	}
+
+	public ProductDetails getDetails() {
+		return details;
 	}
 
 }

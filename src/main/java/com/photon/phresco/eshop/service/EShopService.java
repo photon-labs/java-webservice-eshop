@@ -19,12 +19,15 @@ package com.photon.phresco.eshop.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.orm.hibernate3.HibernateCallback;
@@ -35,6 +38,9 @@ import com.photon.phresco.eshop.commons.exception.ExceptionUtil;
 import com.photon.phresco.eshop.models.CategoryHBM;
 import com.photon.phresco.eshop.models.ProductHBM;
 import com.photon.phresco.eshop.models.ReviewHBM;
+import com.photon.phresco.eshop.models.UserHBM;
+import com.photon.phresco.eshop.models.rest.Comment;
+import com.photon.phresco.eshop.models.rest.KeyValue;
 import com.photon.phresco.eshop.models.rest.Rating;
 import com.photon.phresco.eshop.models.rest.Review;
 import com.photon.phresco.eshop.utils.ServiceUtil;
@@ -261,34 +267,77 @@ public class EShopService {
 
 	public Review getReviews(final int productId) throws EShopException {
 		@SuppressWarnings("unchecked")
-		Review review = (Review) template
-			.execute(new HibernateCallback() {
-			public Object doInHibernate(Session session)
-					throws HibernateException, SQLException {
+		Review review = (Review) template.execute(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException, SQLException {
 				Review review = new Review();
 				review.setProductId(productId);
 				review.setUserId(1);
-
-				List<Rating> ratings = new ArrayList<Rating>(5);
+				List<KeyValue> ratings = new ArrayList<KeyValue>(5);
+				Rating rating = new Rating();
 				int total = 0;
 
 				for (int i = 1; i <= 5; i++) {
-					List<Integer> count = session.createCriteria(ReviewHBM.class)
-						.setProjection(Projections.rowCount())
-						.add(Restrictions.eq("ratings", i))
-						.add(Restrictions.eq("productId", productId)).list();
+					List<Integer> count = session.createCriteria(ReviewHBM.class).setProjection(Projections.rowCount())
+							.add(Restrictions.eq("ratings", i)).add(Restrictions.eq("productId", productId)).list();
 					System.out.println("count = " + count);
 					int totalRating = (int) count.get(0);
 					total += totalRating;
 					System.out.println("Total Rating = " + totalRating);
-					//reviewHBM.setTotalRating(totalRating);
-					Rating rating = new Rating(i, totalRating);
-					ratings.add(rating);
-					//reviews.add(reviewHBM);
+					// reviewHBM.setTotalRating(totalRating);
+					KeyValue keyvalue = new KeyValue(i, totalRating);
+					ratings.add(keyvalue);
+					rating.setRating(ratings);
+					// reviews.add(reviewHBM);
+				}
+
+				Criteria crit = session.createCriteria(ReviewHBM.class).add(Restrictions.eq("productId", productId));
+				ProjectionList p1 = Projections.projectionList();
+				p1.add(Projections.property("comment"));
+				p1.add(Projections.property("ratings"));
+				p1.add(Projections.property("commentDate"));
+				p1.add(Projections.property("userId"));
+
+				crit.setProjection(p1);
+
+				List<Comment> list = crit.list();
+
+				Iterator iter = list.iterator();
+				List<Comment> comments = new ArrayList<Comment>();
+				while (iter.hasNext()) {
+					Object[] obj = (Object[]) iter.next();
+					Comment comment = null;
+					for (int i = 0; i < obj.length; i++) {
+						comment = new Comment();
+						comment.setComment(obj[0].toString());
+						comment.setRatings((Integer) obj[1]);
+						java.sql.Date sqlDate = (java.sql.Date) obj[2];
+						java.util.Date utilDate = new java.util.Date(sqlDate.getTime());
+						comment.setCommentDate(utilDate);
+						comment.setUserid((Integer) obj[3]);
+						comments.add(comment);
+						 Criteria criteria = session.createCriteria(UserHBM.class).add(Restrictions.eq("userId", (Integer) obj[3]));
+						 ProjectionList p2 = Projections.projectionList();
+						 p2.add(Projections.property("userName"));
+						 criteria.setProjection(p2);
+						 
+						 List listusername = criteria.list();
+						 Iterator iter1 = listusername.iterator();
+							while (iter1.hasNext()) {
+								Object[] obj1 = (Object[]) iter.next();
+								for (int j = 0; j < obj1.length; j++) {
+									System.out.println("obj{j] value ---> " + obj1[j]);
+									comment.setUser((String) obj1[j]);
+								}
+							}
+					}
+
 				}
 
 				int averateRating = ServiceUtil.getRating(total);
 				review.setAverage(averateRating);
+				review.setRatings(rating);
+				review.setComments(comments);
+
 				return review;
 			}
 		});

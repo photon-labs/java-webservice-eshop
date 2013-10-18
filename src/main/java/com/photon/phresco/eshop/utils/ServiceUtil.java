@@ -28,6 +28,7 @@ import com.photon.phresco.eshop.models.ProductHBM;
 import com.photon.phresco.eshop.models.ReviewHBM;
 import com.photon.phresco.eshop.models.rest.Category;
 import com.photon.phresco.eshop.models.rest.Product;
+import com.photon.phresco.eshop.models.rest.ProductDetails;
 import com.photon.phresco.eshop.models.rest.ProductReview;
 import com.photon.phresco.eshop.models.rest.Review;
 
@@ -89,10 +90,11 @@ public class ServiceUtil {
 	}
 
 	public static Product getProduct(ProductHBM productHBM) {
-
+		
+		ProductDetails prodDetail = new ProductDetails();
 		Product product = new Product(productHBM.getProductId(), productHBM.getProductName(), productHBM.getCategoryId(),
 				productHBM.getModel(), productHBM.isSpecialProduct(), productHBM.isNewProduct(), productHBM.getListPrice(), productHBM.getSellPrice(),
-				productHBM.getProductDescription(), productHBM.getProductImage(), productHBM.getProductDetailImage());
+				productHBM.getProductDescription(), productHBM.getProductImage(), productHBM.getProductDetailImage(), prodDetail);
 
 		product.setRating(productHBM.getRating());
 

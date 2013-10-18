@@ -15,53 +15,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.photon.phresco.eshop.models.rest;
+ package com.photon.phresco.eshop.models.rest;
+ 
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Rating {
 
-	private int key;
-	private int value;
+	private List<KeyValue> rating ;
 
 	public Rating() {
 
 	}
 
-	public Rating(int key, int value) {
-		this.key = key;
-		this.value = value;
+	public Rating(List<KeyValue> rating) {
+		this.setRating(rating);
 	}
 
-	/**
-	 * @return the key
-	 */
-	public int getKey() {
-		return key;
+	public void setRating(List<KeyValue> rating) {
+		this.rating = rating;
 	}
 
-	/**
-	 * @param key
-	 *            the key to set
-	 */
-	public void setKey(int key) {
-		this.key = key;
-	}
-
-	/**
-	 * @return the value
-	 */
-	public int getValue() {
-		return value;
-	}
-
-	/**
-	 * @param value
-	 *            the value to set
-	 */
-	public void setValue(int value) {
-		this.value = value;
+	public List<KeyValue> getRating() {
+		return rating;
 	}
 
 }

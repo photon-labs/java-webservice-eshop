@@ -28,6 +28,7 @@ public class Comment {
 	private int userid;
 	private Date commentDate;
 	private double average;
+	private String user;
 
 	public int getRatings() {
 		return ratings;
@@ -56,7 +57,7 @@ public class Comment {
 	public Date getCommentDate() {
 		return commentDate;
 	}
-
+	
 	public void setCommentDate(Date commentDate) {
 		this.commentDate = commentDate;
 	}
@@ -65,11 +66,21 @@ public class Comment {
 	}
 
 
-	public Comment(int userid2, Date commentDate2,String Comment,int ratings) {
-		this.userid = userid2;
-		this.commentDate = commentDate2;
+	public Comment(int userid, Date commentDate, String Comment, int ratings, String user) {
+		this.userid = userid;
+		this.commentDate = commentDate;
 		this.comment=Comment;
 		this.ratings=ratings;
+		this.user=user;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public String getUser() {
+		return user;
 	}
 
 }
+

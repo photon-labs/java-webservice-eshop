@@ -15,8 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.photon.phresco.eshop.models.rest;
-
+ package com.photon.phresco.eshop.models.rest;
+ 
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -26,7 +26,7 @@ public class Review {
 
 	private int productId;
 	private int userId;
-	private List<Rating> ratings;
+	private Rating ratings;
 	private double average;
 	private List<Comment> comments;
 
@@ -34,7 +34,7 @@ public class Review {
 
 	}
 
-	public Review(int productId, int userId, List<Rating> ratings,
+	public Review(int productId, int userId, Rating ratings,
 			double average, List<Comment> comments) {
 		this.productId = productId;
 		this.userId = userId;
@@ -76,7 +76,7 @@ public class Review {
 	/**
 	 * @return the ratings
 	 */
-	public List<Rating> getRatings() {
+	public Rating getRatings() {
 		return ratings;
 	}
 
@@ -84,7 +84,7 @@ public class Review {
 	 * @param ratings
 	 *            the ratings to set
 	 */
-	public void setRatings(List<Rating> ratings) {
+	public void setRatings(Rating ratings) {
 		this.ratings = ratings;
 	}
 

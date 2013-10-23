@@ -92,7 +92,7 @@
                     <description></description>
                     <key>testName</key>
                     <multiple>false</multiple>
-                    <value>JavaWSEshop</value>
+                    <value>JavaWS</value>
                     <sort>false</sort>
                     <show>false</show>
                 </parameter>

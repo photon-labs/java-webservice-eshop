@@ -127,7 +127,7 @@ public class XmlPropertyPlaceholderConfigurer extends
 					e1.printStackTrace();
 				}
 				try {
-					if (location.getFilename().endsWith(XML_FILE_EXTENSION)) {
+					if (location.getFilename().endsWith(".xml")) {
 						// this.getClass().getClassLoader().getResourceAsStream(getLocation());
 						ConfigReader reader = new ConfigReader(in);
 						String envName = System.getProperty(serverEnvironment);
